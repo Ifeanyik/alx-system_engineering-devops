@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -typef -printf "%T@ %p\n" | sort -nr | cut -d\ -f2-
+find -mindepth 1 -type d | wc -l

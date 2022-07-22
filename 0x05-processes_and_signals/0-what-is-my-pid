@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+#this script prints it own pid
 ps r | tail -1 | cut -b 1,2,3,4 | cat

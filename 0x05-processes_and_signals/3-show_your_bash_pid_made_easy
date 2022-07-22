@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#prints process name and process ID that have bash in name
+pgrep -fl bash

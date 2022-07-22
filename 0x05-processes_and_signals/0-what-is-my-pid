@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ps r | tail -1 | cut -b 1,2,3,4 | cat

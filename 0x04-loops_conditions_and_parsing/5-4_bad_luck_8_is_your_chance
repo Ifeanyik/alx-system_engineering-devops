@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# uses while loop to print string based on conditions
+i=1
+while [ "$i" -le "10" ]
+do
+	if [ "$i" -eq "4" ]
+	then
+		echo "bad luck"
+		((i++))
+	elif [ "$i" -eq "8" ]
+	then
+		echo "good luck"
+		((i++))
+	else
+		echo "Best School"
+		((i++))
+	fi;
+done

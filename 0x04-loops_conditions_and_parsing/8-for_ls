@@ -2,7 +2,8 @@
 #prints directory contents starting from dash
 touch contents
 ls >> contents
-for i in $(cat contents)
+d=$(cat contents)
+for i in $d
 do
 	print=1
 	dash=0
@@ -29,7 +30,7 @@ do
 		var=$(cat temp_file)
 		if [ "$var" = "contents" ]
 		then
-			a=0
+			i=0
 		else
 			cut -b 1- temp_file
 		fi

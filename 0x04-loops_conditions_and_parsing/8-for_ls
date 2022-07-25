@@ -26,7 +26,13 @@ do
 	done
 	if [ "$dash" = "0" ]
 	then
-		cut -b 1- temp_file
+		var=$(cat temp_file)
+		if [ "$var" = "contents" ]
+		then
+			a=0
+		else
+			cut -b 1- temp_file
+		fi
 	fi
 	rm temp_file
 done

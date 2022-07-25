@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#handles SIGTERM signal
+trap './sigs' SIGTERM;
+while true;
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
+./7-highlander

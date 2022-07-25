@@ -5,6 +5,7 @@ ls >> contents
 for i in $(cat contents)
 do
 	print=1
+	dash=0
         echo "$i" > temp_file
 	bytes=$(wc -m temp_file | cut -b 1-2)
         for ((j=1; j<bytes; j++))
@@ -18,8 +19,15 @@ do
                         	cut -b $j- temp_file
 				((j--))
 				print=0
+				dash=1
+				break
 			fi
                 fi
+		if [ "$dash" = "0" ]
+		then
+			cut -b 1- temp_file
+			break
+		fi
         done;
 done
 rm temp_file

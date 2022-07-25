@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #handles SIGTERM signal
-trap './sigs' SIGTERM;
+trap 'echo "I am invincible!!!"' SIGTERM
 while true;
 do
 	echo "To infinity and beyond"

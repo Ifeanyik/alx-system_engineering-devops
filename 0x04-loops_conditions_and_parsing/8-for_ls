@@ -6,7 +6,7 @@ for i in $(cat contents)
 do
 	print=1
 	dash=0
-        echo "$i" > temp_file
+        echo "$i" >> temp_file
 	bytes=$(wc -m temp_file | cut -b 1-2)
         for ((j=1; j<bytes; j++))
         do
@@ -22,13 +22,12 @@ do
 				dash=1
 				break
 			fi
-                fi
-		if [ "$dash" = "0" ]
-		then
-			cut -b 1- temp_file
-			break
-		fi
-        done;
+                fi;
+	done
+	if [ "$dash" = "0" ]
+	then
+		cut -b 1- temp_file
+	fi
+	rm temp_file
 done
-rm temp_file
 rm contents

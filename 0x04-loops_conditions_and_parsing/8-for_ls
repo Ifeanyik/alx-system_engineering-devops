@@ -4,6 +4,7 @@ touch contents
 ls >> contents
 for i in $(cat contents)
 do
+	print=1
         echo "$i" > temp_file
 	bytes=$(wc -m temp_file | cut -b 1-2)
         for ((j=1; j<bytes; j++))
@@ -11,9 +12,13 @@ do
 		b=$(cut -b $j temp_file)
                 if [ "$b" = "-" ]
                 then
-			((j++))
-                        cut -b $j- temp_file
-			((j--))
+			if [ "$print" = "1" ]
+			then
+				((j++))
+                        	cut -b $j- temp_file
+				((j--))
+				print=0
+			fi
                 fi
         done;
 done

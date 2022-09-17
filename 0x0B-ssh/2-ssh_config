@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# this scripts allows configures an ssh connection to a server
+# to not require password authentication
+Host 6874-web-01
+  PasswordAuthentication no
+    IdentityFile ~/.ssh/school

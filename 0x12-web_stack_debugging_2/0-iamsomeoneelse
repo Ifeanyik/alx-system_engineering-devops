@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-sudo su  --session-command=whoami $1
+# this script changes to another user and verifies which user account is being used
+sudo su  --session-command=whoami "$1"

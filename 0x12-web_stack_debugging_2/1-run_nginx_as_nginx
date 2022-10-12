@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# this script configures nginx to run as nginx user
+echo "[Unit]
+Description=A high performance web server and a reverse proxy server
+Documentation=man:nginx(8)
+After=network.target
+[Service]
+Type=forking
+RuntimeDirectory=nginx
+ExecStartPre=/usr/sbin/nginx -t -q -g 'daemon on; master_process on;'
+ExecStart=/usr/sbin/nginx -g 'daemon on; master_process on;'
+ExecReload=/usr/sbin/nginx -g 'daemon on; master_process on;' -s reload
+ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /var/run/nginx/nginx.pid
+TimeoutStopSec=5
+KillMode=mixed
+User=nginx
+Group=nginx
+Restart=on-failure
+RestartSec=10s
+[Install]
+WantedBy=multi-user.target" >> /usr/lib/systemd/system/nginx.service
+sudo sed -i 's/user www-data;/#/g' /etc/nginx/nginx.conf
+sudo sed -i 's/http {/&\n\tserver {\n\t\tlisten 8080;\n\t}/g' /etc/nginx/nginx.conf
+sudo setfacl -R -m u:nginx:rwx /var/log/nginx
+sudo setfacl -m u:nginx:rwx /run
+sudo chown -R nginx:nginx /usr/share/nginx/
+sudo service nginx restart

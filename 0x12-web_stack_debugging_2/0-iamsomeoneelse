@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo su  --session-command=whoami $1
